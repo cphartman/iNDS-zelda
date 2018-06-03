@@ -11,7 +11,7 @@
 
 #import "iNDSGame.h"
 
-#define kBugUrl @"http://69.167.218.245:6768/iNDS/bugreport"
+#define kBugUrl @"http://-:/iNDS/bugreport"
 //#define kBugUrl @"http://www.williamlcobb.com/iNDS/bugreport"
 
 @class SCLAlertView;

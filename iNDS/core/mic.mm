@@ -19,6 +19,8 @@ TPCircularBuffer *buf;
 bool micEnabled;
 volatile float micSampleRate = 0.0;
 
+float frame_counter = 0;
+
 #define SampleRateModifier 1
 
 void Mic_DeInit(){
@@ -56,6 +58,8 @@ static inline void calcSampleRate() {
 
 // the closer the sample rate is to 16000, the better the microphone will work
 u8 Mic_ReadSample(){
+    return (rand() % 4 - 2) + 128;
+    
     if (!microphone || !micEnabled)
         return 128;
 
@@ -69,7 +73,15 @@ u8 Mic_ReadSample(){
         // The ds mic is much less sensitive so the sound needs to be dampened
         s8 sample = (stream[index] - 128);
         
-        //printf("Sample: %d -> %d\n", (stream[index] - 128), sample);
+        sample = rand() % 4 - 2;
+        
+        if( sample != 0 ) {
+            printf("Sample: %d -> %d\n", (stream[index] - 128), sample);
+        } else {
+            frame_counter++;
+        }
+        
+        
         
         return sample + 128;
         

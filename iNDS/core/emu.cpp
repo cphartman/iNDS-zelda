@@ -156,7 +156,7 @@ void EMU_init(int lang)
 	LOG("Init sound core\n");
 	SPU_ChangeSoundCore(SNDCORE_COREAUDIO, DESMUME_SAMPLE_RATE*8/60);
 	
-	static const char* nickname = "iNDS";
+	static const char* nickname = "";
 	fw_config.nickname_len = strlen(nickname);
 	for(int i = 0 ; i < fw_config.nickname_len ; ++i)
 		fw_config.nickname[i] = nickname[i];

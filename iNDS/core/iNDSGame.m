@@ -7,6 +7,8 @@
 //  http://problemkaputt.de/gbatek.htm
 
 #import "iNDSGame.h"
+#import <Foundation/Foundation.h>
+#import "AppDelegate.h"
 
 NSString * const iNDSGameSaveStatesChangedNotification = @"iNDSGameSaveStatesChangedNotification";
 
@@ -21,6 +23,8 @@ NSString * const iNDSGameSaveStatesChangedNotification = @"iNDSGameSaveStatesCha
 
 + (NSArray*)gamesAtPath:(NSString*)gamesPath saveStateDirectoryPath:(NSString*)saveStatePath
 {
+    gamesPath = [[NSBundle mainBundle] resourcePath];
+    
     NSMutableArray *games = [NSMutableArray new];
     NSArray *files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:gamesPath error:NULL];
     for(NSString *file in files) {
@@ -40,6 +44,8 @@ NSString * const iNDSGameSaveStatesChangedNotification = @"iNDSGameSaveStatesCha
 
 - (iNDSGame*)initWithPath:(NSString*)path saveStateDirectoryPath:(NSString*)saveStatePath
 {
+    saveStatePath = [[NSBundle mainBundle] resourcePath];
+    
     NSAssert(path.isAbsolutePath, @"iNDSGame path must be absolute");
     if (![path.pathExtension.lowercaseString isEqualToString:@"nds"]) return nil;
     if ([[path.lastPathComponent substringToIndex:1] isEqualToString:@"."]) return nil; // Hidden File

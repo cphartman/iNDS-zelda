@@ -50,7 +50,7 @@ TPCircularBuffer buffer;
 
 - (BOOL)micEnabled
 {
-    return true;//[[NSUserDefaults standardUserDefaults] boolForKey:@"enableMic"];
+    return false;//[[NSUserDefaults standardUserDefaults] boolForKey:@"enableMic"];
 }
 
 - (void)start

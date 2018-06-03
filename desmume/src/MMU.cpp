@@ -40,6 +40,8 @@
 #include "readwrite.h"
 #include "MMU_timing.h"
 
+#include <os/log.h>
+
 #ifdef DO_ASSERT_UNALIGNED
 #define ASSERT_UNALIGNED(x) assert(x)
 #else
@@ -1667,9 +1669,10 @@ void FASTCALL MMU_writeToSPIData(u16 val)
 					break;
 
 				case TSC_MEASURE_AUX:
-					if(!(val & 0x80))
+                    if(!(val & 0x80)) {
 						val = (Mic_ReadSample() & 0xFF);
-					else
+                        //LOG("MIC: %08X", val);
+                    } else
 						val = 0;
 				break;
 			}

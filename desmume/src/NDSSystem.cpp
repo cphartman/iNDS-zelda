@@ -3039,6 +3039,7 @@ static void NDS_applyFinalInput()
 		nds.isTouch = 0;
 	}
 
+	// Lid close button
 	if (input.buttons.F && !countLid) 
 	{
 		LidClosed = (!LidClosed) & 0x01;

@@ -17,6 +17,7 @@
 #import "WCEasySettingsViewController.h"
 #import "WCBuildStoreClient.h"
 #import "SharkfoodMuteSwitchDetector.h"
+#import <AVFoundation/AVFoundation.h>
 
 @interface iNDSROMTableViewController () {
     NSMutableArray * activeDownloads;
@@ -61,7 +62,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [AppDelegate.sharedInstance startBackgroundProcesses];
+    //[AppDelegate.sharedInstance startBackgroundProcesses];
     // watch for changes in documents folder
     docWatchHelper = [MHWDirectoryWatcher directoryWatcherAtPath:AppDelegate.sharedInstance.documentsPath
                                                         callback:^{
@@ -88,6 +89,37 @@
 
 - (void)reloadGames:(id)sender
 {
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    
+    AVAudioSessionRecordPermission sessionRecordPermission = [session recordPermission];
+    
+    PermissionBlock permissionBlock = ^(BOOL granted) {
+        if (granted)
+        {
+            NSLog(@"Granted");
+        }
+        else
+        {
+            NSLog(@"Denied");
+        }
+    };
+
+    switch (sessionRecordPermission) {
+        case AVAudioSessionRecordPermissionUndetermined:
+            NSLog(@"Mic permission indeterminate. Call method for indeterminate stuff.");
+            [[AVAudioSession sharedInstance] performSelector:@selector(requestRecordPermission:)
+                                                  withObject:permissionBlock];
+            break;
+        case AVAudioSessionRecordPermissionDenied:
+            NSLog(@"Mic permission denied. Call method for denied stuff.");
+            break;
+        case AVAudioSessionRecordPermissionGranted:
+            NSLog(@"Mic permission granted.  Call method for granted stuff.");
+            break;
+        default:
+            break;
+    }
+    
     NSLog(@"Reloading");
     if (sender == self) {
         // do it later, the file may not be written yet

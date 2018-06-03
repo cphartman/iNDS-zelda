@@ -67,6 +67,7 @@
     NSString *cheatSavePath = [NSString stringWithUTF8String:(char *)cheats->filename];
     //Eventually we might want to create our own NSInput stream to parse XML on the fly to reduce memory overhead and increase speed. This will work fine for now though
     if (![[NSFileManager defaultManager] fileExistsAtPath:cheatSavePath]) {
+        /*
         NSLog(@"Loading DB Cheats");
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             NSData *cheatData;
@@ -79,6 +80,7 @@
             [cheatParser parse];
             
         });
+         */
     } else {
         [self indexCheats];
         dispatch_async(dispatch_get_main_queue(), ^{

@@ -68,6 +68,7 @@
 
 - (void)startBackgroundProcesses
 {
+    
     if (backgroundProcessesStarted) {
         return;
     }
@@ -98,22 +99,6 @@
         }
         
         
-        //Show Twitter alert
-        if (![[NSUserDefaults standardUserDefaults] objectForKey:@"TwitterAlert"]) {
-            [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"TwitterAlert"];
-        } else if ([[NSUserDefaults standardUserDefaults] integerForKey:@"TwitterAlert"] < 5) {
-            [[NSUserDefaults standardUserDefaults] setInteger: [[NSUserDefaults standardUserDefaults] integerForKey:@"TwitterAlert"] + 1 forKey:@"TwitterAlert"];
-        } else if ([[NSUserDefaults standardUserDefaults] integerForKey:@"TwitterAlert"] == 5) {
-            [[NSUserDefaults standardUserDefaults] setInteger:10 forKey:@"TwitterAlert"];
-            SCLAlertView * alert = [[SCLAlertView alloc] init];
-            alert.iconTintColor = [UIColor whiteColor];
-            alert.shouldDismissOnTapOutside = YES;
-            [alert addButton:@"Follow" actionBlock:^(void) {
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://twitter.com/miniroo321"]];
-            }];
-            UIImage * twitterImage = [[UIImage imageNamed:@"Twitter.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-            [alert showCustom:[self topMostController] image:twitterImage color:[UIColor colorWithRed:85/255.0 green:175/255.0 blue:238/255.0 alpha:1] title:@"Love iNDS?" subTitle:@"Show some love and get updates about the newest emulators by following the developer on Twitter!" closeButtonTitle:@"No, Thanks" duration:0.0];
-        }
     });
 }
 
@@ -163,6 +148,7 @@
                     return NO;
                 }
             } else { //Rar
+                /*
                 NSError *archiveError = nil;
                 URKArchive *archive = [[URKArchive alloc] initWithPath:url.path error:&archiveError];
                 if (!archive) {
@@ -178,7 +164,7 @@
                     [self showError:@"Unable to extract .rar file."];
                     [fm removeItemAtPath:url.path error:NULL];
                     return NO;
-                }
+                }*/
             }
             NSLog(@"Searching");
             NSMutableArray * foundItems = [NSMutableArray array];

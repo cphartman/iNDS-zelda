@@ -26,7 +26,7 @@ void Mic_DeInit(){
 }
 BOOL Mic_Init(){
     printf("Mic Init\n");
-    if (!microphone && [[AVAudioSession sharedInstance] respondsToSelector:@selector(requestRecordPermission)]) {
+    if ( !microphone ) {
         dispatch_async(dispatch_get_main_queue(), ^{
             microphone = [[iNDSMicrophone alloc] init];
             micEnabled = microphone.micEnabled;
@@ -69,8 +69,9 @@ u8 Mic_ReadSample(){
         // The ds mic is much less sensitive so the sound needs to be dampened
         s8 sample = (stream[index] - 128);
         
-        //printf("Sample: %d -> %d\n", (stream[index] - 128), sample/5);
-        return sample / 5 + 128;
+        //printf("Sample: %d -> %d\n", (stream[index] - 128), sample);
+        
+        return sample + 128;
         
     } else {
 //#ifdef DEBUG

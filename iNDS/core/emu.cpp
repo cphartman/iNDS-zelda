@@ -487,14 +487,22 @@ void EMU_setButtons(int l, int r, int up, int down, int left, int right, int a, 
 
 void EMU_buttonDown(BUTTON_ID button)
 {
-    _b[button] = true;
-    NDS_setPad(all_button);
+    if( button == BUTTON_R ) {
+        NDS_setMic(true);
+    } else {
+        _b[button] = true;
+        NDS_setPad(all_button);
+    }
 }
 
 void EMU_buttonUp(BUTTON_ID button)
 {
-    _b[button] = false;
-    NDS_setPad(all_button);
+    if( button == BUTTON_R ) {
+        NDS_setMic(false);
+    } else {
+        _b[button] = false;
+        NDS_setPad(all_button);
+    }
 }
 
 void EMU_setDPad(bool up, bool down, bool left, bool right)

@@ -19,6 +19,8 @@
 #import "SharkfoodMuteSwitchDetector.h"
 #import <AVFoundation/AVFoundation.h>
 
+#import <Foundation/Foundation.h>
+
 @interface iNDSROMTableViewController () {
     NSMutableArray * activeDownloads;
     MHWDirectoryWatcher * docWatchHelper;
@@ -34,6 +36,9 @@
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
     self.navigationItem.title = NSLocalizedString(@"ROM_LIST", nil);
     activeDownloads = [[iNDSRomDownloadManager sharedManager] activeDownloads];
+    
+    
+    
 #ifdef DEBUG
     /*
     self.title = @"DEBUG MODE";

@@ -977,12 +977,24 @@ NSInteger filter = [[NSUserDefaults standardUserDefaults] integerForKey:@"videoF
     EMU_buttonUp((BUTTON_ID)sender.tag);
 }
 
+int closed = 0;
 - (IBAction)onButtonDown:(UIControl*)sender
 {
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"vibrate"])
     {
         [self vibrate];
     }
+    
+    if( (BUTTON_ID)sender.tag == BUTTON_L ) {
+        if (closed) {
+            EMU_buttonDown((BUTTON_ID)13);
+            closed = 0;
+        } else {
+            closed = 1;
+            EMU_buttonUp((BUTTON_ID)13);
+        }
+    }
+    
     EMU_buttonDown((BUTTON_ID)sender.tag);
 }
 

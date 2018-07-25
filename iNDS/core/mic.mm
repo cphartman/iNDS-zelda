@@ -14,6 +14,8 @@
 // For easy timing functions... remove later
 #import <UIKit/UIKit.h>
 
+#include "NDSSystem.h"
+
 iNDSMicrophone *microphone;
 TPCircularBuffer *buf;
 bool micEnabled;
@@ -58,7 +60,12 @@ static inline void calcSampleRate() {
 
 // the closer the sample rate is to 16000, the better the microphone will work
 u8 Mic_ReadSample(){
-    return (rand() % 4 - 2) + 128;
+    const UserInput& input = NDS_getFinalUserInput();
+    
+    if( input.mic.micButtonPressed )
+        return (rand() % 4 - 2) + 128;
+    else
+        return 0;
     
     if (!microphone || !micEnabled)
         return 128;

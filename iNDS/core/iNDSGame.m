@@ -42,9 +42,19 @@ NSString * const iNDSGameSaveStatesChangedNotification = @"iNDSGameSaveStatesCha
     return [[iNDSGame alloc] initWithPath:path saveStateDirectoryPath:saveStatePath];
 }
 
++ (NSArray*)saveStatesAtPath:(NSString*)path
+{
+    NSArray *files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:path error:NULL];
+    NSString *savePrefix = [path.lastPathComponent.stringByDeletingPathExtension stringByAppendingString:@"."];
+    
+    return [files objectsAtIndexes:[files indexesOfObjectsPassingTest:^BOOL(NSString *filename, NSUInteger idx, BOOL *stop) {
+        return [[filename lowercaseString] hasSuffix:@".dsv"];
+    }]];
+}
+
 - (iNDSGame*)initWithPath:(NSString*)path saveStateDirectoryPath:(NSString*)saveStatePath
 {
-    saveStatePath = [[NSBundle mainBundle] resourcePath];
+    //saveStatePath = [[NSBundle mainBundle] resourcePath];
     
     NSAssert(path.isAbsolutePath, @"iNDSGame path must be absolute");
     if (![path.pathExtension.lowercaseString isEqualToString:@"nds"]) return nil;
@@ -65,22 +75,27 @@ NSString * const iNDSGameSaveStatesChangedNotification = @"iNDSGameSaveStatesCha
 
 - (void)_loadSaveStates
 {
-    // get save states (<ROM name without extension>.<save state name>.dsv)
-    NSArray *files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:self.pathForSavedStates error:NULL];
-    NSString *savePrefix = [self.path.lastPathComponent.stringByDeletingPathExtension stringByAppendingString:@"."];
     
-    saveStates = [files objectsAtIndexes:[files indexesOfObjectsPassingTest:^BOOL(NSString *filename, NSUInteger idx, BOOL *stop) {
-        return ([filename.pathExtension isEqualToString:@"dsv"] && [filename.stringByDeletingPathExtension hasPrefix:savePrefix]);
-    }]];
+    
+    NSArray *documentStates = [iNDSGame saveStatesAtPath:self.pathForSavedStates];
+    //NSArray *appStates = [self getSaveStatesAtPath:[[NSBundle mainBundle] resourcePath]];
+    
+    
+    // get document save states (<ROM name without extension>.<save state name>.dsv)
+    // Get Bundle Save Sates
+    saveStates = documentStates;//[documentStates arrayByAddingObjectsFromArray:appStates];
+    
+    
+    
     
     NSFileManager *fm = [NSFileManager defaultManager];
-    saveStates = [saveStates sortedArrayUsingComparator:^NSComparisonResult(NSString *s1, NSString *s2) {
+    /*saveStates = [saveStates sortedArrayUsingComparator:^NSComparisonResult(NSString *s1, NSString *s2) {
         //if ([s1 hasSuffix:@".pause.dsv"]) return NSOrderedAscending;
         //if ([s2 hasSuffix:@".pause.dsv"]) return NSOrderedDescending;
         NSDate *date1 = [fm attributesOfItemAtPath:[self.pathForSavedStates stringByAppendingPathComponent:s1] error:NULL].fileModificationDate;
         NSDate *date2 = [fm attributesOfItemAtPath:[self.pathForSavedStates stringByAppendingPathComponent:s2] error:NULL].fileModificationDate;
         return [date2 compare:date1];
-    }];
+    }];*/
 }
 
 - (void)reloadSaveStates

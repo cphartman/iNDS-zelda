@@ -24,6 +24,7 @@ FOUNDATION_EXPORT NSString * const iNDSGameSaveStatesChangedNotification;
 + (int)preferredLanguage; // returns a NDS_FW_LANG_ constant
 + (NSArray*)gamesAtPath:(NSString*)path saveStateDirectoryPath:(NSString*)saveStatePath;
 + (iNDSGame*)gameWithPath:(NSString*)path saveStateDirectoryPath:(NSString*)saveStatePath;
++ (NSArray*)saveStatesAtPath:(NSString*)path;
 - (iNDSGame*)initWithPath:(NSString*)path saveStateDirectoryPath:(NSString*)saveStatePath;
 - (NSString*)pathForSaveStateWithName:(NSString*)name;
 - (NSString*)pathForSaveStateAtIndex:(NSInteger)idx;

@@ -24,8 +24,9 @@
 		4651B9C81C323B3300857FB6 /* iCadeReaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4651B9C61C323B3300857FB6 /* iCadeReaderView.m */; };
 		46C587631C502F9F00CE47BD /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46C587651C502F9F00CE47BD /* MainStoryboard.storyboard */; };
 		4C3F2AED178E017600AE10B8 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3F2AEC178E017600AE10B8 /* Twitter.framework */; };
+		5A01026B2103BC9E00E5A0B7 /* zst.nds in Resources */ = {isa = PBXBuildFile; fileRef = 5A01026A2103BC9E00E5A0B7 /* zst.nds */; };
 		5A2C481E20C4676B002883A6 /* loz.nds in Resources */ = {isa = PBXBuildFile; fileRef = 5A2C481D20C4676A002883A6 /* loz.nds */; };
-		5A2C482520C46C0A002883A6 /* loz.pause.dsv in Resources */ = {isa = PBXBuildFile; fileRef = 5A2C482420C46C0A002883A6 /* loz.pause.dsv */; };
+		5A2C482520C46C0A002883A6 /* loz.bundle.dsv in Resources */ = {isa = PBXBuildFile; fileRef = 5A2C482420C46C0A002883A6 /* loz.bundle.dsv */; };
 		8B28306B178DDC7F00E92785 /* iNDSDonationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B28306A178DDC7F00E92785 /* iNDSDonationViewController.m */; };
 		8B4895C5178CE15D00BA61C3 /* iNDSROMTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B4895C4178CE15D00BA61C3 /* iNDSROMTableViewController.m */; };
 		8BEA096A17872C190060B347 /* iNDSButtonControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEA096717872C190060B347 /* iNDSButtonControl.m */; };
@@ -314,8 +315,9 @@
 		4651B9C61C323B3300857FB6 /* iCadeReaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCadeReaderView.m; sourceTree = "<group>"; };
 		4651B9C71C323B3300857FB6 /* iCadeState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCadeState.h; sourceTree = "<group>"; };
 		4C3F2AEC178E017600AE10B8 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		5A01026A2103BC9E00E5A0B7 /* zst.nds */ = {isa = PBXFileReference; lastKnownFileType = file; name = zst.nds; path = Resources/zst.nds; sourceTree = "<group>"; };
 		5A2C481D20C4676A002883A6 /* loz.nds */ = {isa = PBXFileReference; lastKnownFileType = file; name = loz.nds; path = Resources/loz.nds; sourceTree = "<group>"; };
-		5A2C482420C46C0A002883A6 /* loz.pause.dsv */ = {isa = PBXFileReference; lastKnownFileType = file; path = loz.pause.dsv; sourceTree = "<group>"; };
+		5A2C482420C46C0A002883A6 /* loz.bundle.dsv */ = {isa = PBXFileReference; lastKnownFileType = file; path = loz.bundle.dsv; sourceTree = "<group>"; };
 		8B28306A178DDC7F00E92785 /* iNDSDonationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iNDSDonationViewController.m; path = iNDS/donation/iNDSDonationViewController.m; sourceTree = SOURCE_ROOT; };
 		8B4895C4178CE15D00BA61C3 /* iNDSROMTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iNDSROMTableViewController.m; path = iNDS/roms/iNDSROMTableViewController.m; sourceTree = SOURCE_ROOT; };
 		8BEA096017872BF90060B347 /* iNDSROMTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iNDSROMTableViewController.h; path = iNDS/roms/iNDSROMTableViewController.h; sourceTree = SOURCE_ROOT; };
@@ -867,7 +869,6 @@
 		5A2C482320C46C0A002883A6 /* savestates */ = {
 			isa = PBXGroup;
 			children = (
-				5A2C482420C46C0A002883A6 /* loz.pause.dsv */,
 			);
 			name = savestates;
 			path = Resources/savestates;
@@ -952,6 +953,8 @@
 		BF9D515517865E1300B5864B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5A01026A2103BC9E00E5A0B7 /* zst.nds */,
+				5A2C482420C46C0A002883A6 /* loz.bundle.dsv */,
 				5A2C482320C46C0A002883A6 /* savestates */,
 				5A2C481D20C4676A002883A6 /* loz.nds */,
 				CABE38BF1C34B8B800BE8857 /* Icons */,
@@ -1821,6 +1824,7 @@
 				CA5F11D91CE15F4F00AA1419 /* mute.caf in Resources */,
 				CAB2C4301CB2234300ED22BB /* cheats.rar in Resources */,
 				CAB2C4311CB2234300ED22BB /* cheats.7z in Resources */,
+				5A01026B2103BC9E00E5A0B7 /* zst.nds in Resources */,
 				28DA4A481787FD7F002236A4 /* Select.png in Resources */,
 				28DA4A52178802FB002236A4 /* RTrigger.png in Resources */,
 				28DA4A491787FD7F002236A4 /* Select@2x.png in Resources */,
@@ -1847,7 +1851,7 @@
 				CAB2C42A1CB2041900ED22BB /* iNDS-Info.plist in Resources */,
 				BF9D516C17867F7D00B5864B /* JoystickBackground.png in Resources */,
 				BF9D516D17867F7D00B5864B /* JoystickBackground@2x.png in Resources */,
-				5A2C482520C46C0A002883A6 /* loz.pause.dsv in Resources */,
+				5A2C482520C46C0A002883A6 /* loz.bundle.dsv in Resources */,
 				BF9D516E17867F7D00B5864B /* JoystickButton.png in Resources */,
 				BF9D516F17867F7D00B5864B /* JoystickButton@2x.png in Resources */,
 				AE2F3B6018EF7F5A007A4BA0 /* Localizable.strings in Resources */,

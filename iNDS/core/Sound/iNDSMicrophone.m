@@ -53,6 +53,12 @@ TPCircularBuffer buffer;
     return false;//[[NSUserDefaults standardUserDefaults] boolForKey:@"enableMic"];
 }
 
+- (BOOL)micPressed
+{
+    
+    return false;//[[NSUserDefaults standardUserDefaults] boolForKey:@"enableMic"];
+}
+
 - (void)start
 {
     if (!microphone.microphoneOn) {

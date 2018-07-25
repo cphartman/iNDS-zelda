@@ -7,6 +7,7 @@
 //
 
 #import "iNDSInitialViewController.h"
+#import "iNDSGame.h"
 
 @interface iNDSInitialViewController ()
 
@@ -24,6 +25,9 @@
     NSLog(@"Appeared");
     [self performSegueWithIdentifier:@"ToRoot" sender:self];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+
+    
+    
 }
 
 

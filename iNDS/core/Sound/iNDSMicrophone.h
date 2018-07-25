@@ -14,5 +14,6 @@
 
 - (void)start;
 - (BOOL)micEnabled;
+- (BOOL)micPressed;
 
 @end

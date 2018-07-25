@@ -57,6 +57,19 @@
         [[NSFileManager defaultManager] createDirectoryAtPath:self.batteryDir withIntermediateDirectories:YES attributes:nil error:nil];
     }
     
+    // Copy bundle save files to documents
+    NSArray* saveStates = [iNDSGame saveStatesAtPath:[[NSBundle mainBundle] resourcePath]];
+    
+    NSError* e;
+    for (NSString* state in saveStates) {
+        
+        NSString* statePath = [[[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/"]
+                               stringByAppendingString:state];
+        NSString* destPath = [[self.batteryDir stringByAppendingString:@"/"] 
+                             stringByAppendingString:state];
+        [[NSFileManager defaultManager] copyItemAtPath:statePath toPath:destPath error:&e];
+    }
+    
     [self.window setTintColor:[UIColor colorWithRed:1 green:59/255.0 blue:48/255.0 alpha:1]];
     
     [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60)
